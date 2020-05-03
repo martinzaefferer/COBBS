@@ -1,0 +1,26 @@
+Package: COBBS
+Version: 1.0.0
+Title: Continuous Optimization Benchmarks By Simulation
+Authors@R: c(	
+				person("Martin", "Zaefferer", role = c("aut", "cre"),email = "mzaefferer@gmail.com"),
+				person("Frederik","Rehbach", role = "aut")
+				)
+Description: Perform benchmarks of continuous optimization benchmarks by simulation of Gaussian process regression models.
+License: GPL (>= 3)
+Type: Package
+LazyLoad: yes
+Depends:
+    R (>= 3.0.0)
+Imports:
+		data.table,
+		dplyr,
+		ggplot2,
+		nloptr,
+		reshape2,
+		smoof,
+		SPOT,
+		stats,
+		utils
+ByteCompile: TRUE
+Date: 2020-04-23
+RoxygenNote: 7.1.0

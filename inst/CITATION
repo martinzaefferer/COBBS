@@ -1,0 +1,16 @@
+citHeader("To cite COBBS in publications please consider:")
+
+bibentry(bibtype="InProceedings",
+		title = "Continuous Optimization Benchmarks by Simulation",
+		author = c(
+			person("Martin","Zaefferer"),
+			person("Frederik","Rehbach")
+	  ),
+		booktitle = "a",
+		year = "9999",
+		address = "",
+		publisher= "",
+		pages = "",
+		url = ""
+)
+
