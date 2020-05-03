@@ -16,4 +16,6 @@ Note, that this requires the devtools package being installed (`install.packages
 
 See the example in
 
+`require(COBBS)` 
+
 `?generateCOBBS` 
