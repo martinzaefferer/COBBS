@@ -21,6 +21,8 @@ Imports:
 		SPOT,
 		stats,
 		utils
+Suggests:
+	SPOT
 ByteCompile: TRUE
 Date: 2020-04-23
 RoxygenNote: 7.1.0
