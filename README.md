@@ -24,6 +24,7 @@ See the example in
 ## Demo
 
 ```
+require(COBBS)
 ## generate some data
 require(smoof)
 seed <- 1234
@@ -39,9 +40,8 @@ set.seed(seed)
 
 ## prepare an expression that will be run during the experiments
 ## here: DE
-require(SPOT)
 expr <- expression(
-  res <- optimDE(fun = fnlog,lower=lower,upper=upper,control=list(funEvals=dimension*100,populationSize=dimension*20))
+  res <- DEinterface(fun = fnlog,lower=lower,upper=upper,control=list(funEvals=dimension*100,populationSize=dimension*20))
 )
 ## run an experiments, with logging
 require(COBBS)
@@ -65,7 +65,7 @@ cntrl <- list(modelControl=mc,
 cobbsResult <- generateCOBBS(x,y,cntrl)
 cobbsResult$fit
 
-## plot trained model (predictor, estimatation)
+## plot trained model (predictor, estimatation), using SPOT package
 SPOT:::plotFunction(groundtruth,lower,upper)
 SPOT:::plotFunction(cobbsResult$estimation,lower,upper)
 SPOT:::plotFunction(cobbsResult$simulation[[1]],lower,upper)
