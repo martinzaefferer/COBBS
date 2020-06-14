@@ -39,7 +39,6 @@
 # @references Zaefferer, Martin; Stork, Joerg; Friese, Martina; Fischbach, Andreas; Naujoks, Boris; Bartz-Beielstein, Thomas. (2014). Efficient global optimization for combinatorial problems. In Proceedings of the 2014 conference on Genetic and evolutionary computation (GECCO '14). ACM, New York, NY, USA, 871-878. DOI=10.1145/2576768.2598282 http://doi.acm.org/10.1145/2576768.2598282 
 #' @keywords package
 #' @seealso Interface of main function: \code{\link{generateCOBBS}} 
-#' @import SPOT
 #' @import reshape2
 #' @import smoof
 #' @import ggplot2

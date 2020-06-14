@@ -11,7 +11,7 @@
 #' @param y vector of observations at sample locations x
 #' @param control (list), specifying the options for model training and simulation:
 #' \describe{
-#' \item{\code{modelControl}}{a list of controls for the GPR model, passed to \code{control} argument of \code{\link{buildKriging}}.}
+#' \item{\code{modelControl}}{a list of controls for the GPR model, passed to \code{control} argument of \code{\link{gaussianProcessRegression}}.}
 #' \item{\code{method}}{a string specifiying the simulation method: \code{"spectral"} (default) or \code{"decompose"}.}
 #' \item{\code{xsim}}{Locations for simulation, for decompose method only. Defaults to \code{NA}.}
 #' \item{\code{nsim}}{Number of simulation instances to generate. Defaults to \code{1}.}
@@ -22,7 +22,7 @@
 #'
 #' @return 
 #' \describe{
-#' \item{\code{fit}}{object/fit produced by \code{\link{buildKriging}}}
+#' \item{\code{fit}}{object/fit produced by \code{\link{gaussianProcessRegression}}}
 #' \item{\code{estimation}}{a function, GPR predictor} 
 #' \item{\code{simulation}}{a list of one or more test functions to be used for benchmarking (based on GPR simulation)}
 #' }
@@ -108,7 +108,7 @@ generateCOBBS <- function(x,y,control=list()){
   control<-con
   rm(con)
   
-  fit <- buildKriging(x,y,control=control$modelControl)
+  fit <- gaussianProcessRegression(x,y,control=control$modelControl)
   estimFun <- evaluateModel(fit)
   simFun <- simulateFunction(object=fit,
                              method=control$method, 
