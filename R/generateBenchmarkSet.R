@@ -109,7 +109,7 @@ generateCOBBS <- function(x,y,control=list()){
   rm(con)
   
   fit <- gaussianProcessRegression(x,y,control=control$modelControl)
-  estimFun <- evaluateModel(fit)
+  estimFun <- fit2function(fit)
   simFun <- simulateFunction(object=fit,
                              method=control$method, 
                              xsim=control$xsim, 

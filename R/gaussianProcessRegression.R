@@ -66,7 +66,7 @@
 #' ## Compute observations at design points (for Branin function)
 #' y <- as.matrix(apply(x,1,braninFunction))
 #' ## Create model with default settings
-#' fit <- gaussianProcessRegression(x,y,control = list(algTheta=optimLHD))
+#' fit <- gaussianProcessRegression(x,y)
 #' ## Print model parameters
 #' print(fit)
 #' ## Predict at new location

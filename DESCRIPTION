@@ -1,4 +1,5 @@
 Package: COBBS
+License: GPL (>= 3)
 Version: 1.0.0
 Title: Continuous Optimization Benchmarks By Simulation
 Authors@R: c(	
@@ -6,7 +7,6 @@ Authors@R: c(
 				person("Frederik","Rehbach", role = "aut")
 				)
 Description: Perform benchmarks of continuous optimization benchmarks by simulation of Gaussian process regression models.
-License: GPL (>= 3)
 Type: Package
 LazyLoad: yes
 Depends:
@@ -16,10 +16,10 @@ Imports:
 		DEoptim,
 		dplyr,
 		ggplot2,
+		MASS,
 		nloptr,
 		reshape2,
 		smoof,
-		SPOT,
 		stats,
 		utils
 Suggests:

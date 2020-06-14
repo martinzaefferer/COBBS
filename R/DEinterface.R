@@ -26,7 +26,8 @@
 #' }
 #'
 #' @examples
-#' res <- DEinterface(,lower = c(-10,-20),upper=c(20,8),fun = funSphere)
+#' objfun <- function (x) matrix(apply(x, 1, function(x) sum(x^2)), , 1)
+#' res <- DEinterface(,lower = c(-10,-20),upper=c(20,8),fun = objfun)
 #' res$ybest
 #' @export
 ###################################################################################################

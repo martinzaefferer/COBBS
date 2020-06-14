@@ -282,9 +282,6 @@ simulateFunction <- function(object,nsim=1, seed=NA, method="spectral", xsim=NA,
     object$Psinv <- MASS::ginv(object$Psi) 
     object$x <- xsim
     object$scaledx <- normalizeMatrix2(data.matrix(xsim),0,1,object$normalizexmin,object$normalizexmax) 
-    PsinvSaved  <- object$Psinv
-    
-    n <- length(xsim)
     
     fun <- list()
     for(i in 1:nsim){

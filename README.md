@@ -65,7 +65,7 @@ cntrl <- list(modelControl=mc,
 cobbsResult <- generateCOBBS(x,y,cntrl)
 cobbsResult$fit
 
-## plot trained model (predictor, estimatation), using SPOT package
+## plot trained model (predictor/estimatation and simulation), using SPOT package
 SPOT:::plotFunction(groundtruth,lower,upper)
 SPOT:::plotFunction(cobbsResult$estimation,lower,upper)
 SPOT:::plotFunction(cobbsResult$simulation[[1]],lower,upper)

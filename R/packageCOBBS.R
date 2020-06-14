@@ -46,7 +46,8 @@
 #' @import dplyr
 #' @import nloptr
 #' @importFrom data.table nafill
-#' @importFrom stats median quantile
+#' @importFrom MASS ginv
+#' @importFrom stats median quantile simulate dist pnorm predict rnorm runif var
 #' @importFrom utils tail
 #
 NA #ends description
