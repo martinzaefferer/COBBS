@@ -74,7 +74,7 @@ SPOT:::plotFunction(cobbsResult$simulation[[1]],lower,upper)
 ## here: DE
 require(nloptr)
 expr <- expression(
-  res <- optimDE(fun = fnlog,lower=lower,upper=upper,control=list(funEvals=1000*dimension))
+  res <- DEinterface(fun = fnlog,lower=lower,upper=upper,control=list(funEvals=1000*dimension))
 )
 ## run the experiments, with logging
 ## with each objective function produced by COBBS
