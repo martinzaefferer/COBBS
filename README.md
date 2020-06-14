@@ -79,9 +79,9 @@ expr <- expression(
 ## run the experiments, with logging
 ## with each objective function produced by COBBS
 
-resgt <- loggedExperiment(expr, groundtruth, 1:20,10)
-reses <- loggedExperiment(expr, cobbsResult$estimation, 1:20,10)
-ressi <- loggedExperiment(expr, cobbsResult$simulation[[1]], 1:20,10)
+resgt <- loggedExperiment(expr, groundtruth, 1:10,10)
+reses <- loggedExperiment(expr, cobbsResult$estimation, 1:10,10)
+ressi <- loggedExperiment(expr, cobbsResult$simulation[[1]], 1:10,10)
 ## plot results
 print(plotBenchmarkPerformance(list(resgt,reses,ressi),c("groundtruth","estimation","simulation")))
 ## plot error, comparing against groundtruth
