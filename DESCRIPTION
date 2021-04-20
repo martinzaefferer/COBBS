@@ -26,4 +26,4 @@ Suggests:
 	SPOT
 ByteCompile: TRUE
 Date: 2020-04-23
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

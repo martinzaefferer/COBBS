@@ -14,8 +14,8 @@
 #' @param y vector of observations at \code{x}
 #' @param control (list), with the options for the model building procedure:\cr
 #' \code{types} a character vector giving the data type of each variable. All but "factor" will be handled as numeric, "factor" (categorical) variables will be subject to the hamming distance.\cr
-#' \code{thetaLower} lower boundary for theta, default is \code{1e-4}\cr
-#' \code{thetaUpper} upper boundary for theta, default is \code{1e2}\cr
+#' \code{thetaLower} lower boundary for theta, default is \code{1e-6}\cr
+#' \code{thetaUpper} upper boundary for theta, default is \code{1e12}\cr
 #' \code{algTheta}  algorithm used to find theta, default is \code{DEinterface}.\cr
 #' \code{budgetAlgTheta} budget for the above mentioned algorithm, default is \code{200}. The value will be multiplied with the length of the model parameter vector to be optimized.\cr
 #' \code{optimizeP} boolean that specifies whether the exponents (\code{p}) should be optimized. Else they will be set to two. Default is \code{FALSE}\cr
@@ -23,7 +23,7 @@
 #' \code{lambdaLower} lower boundary for log10{lambda}, default is \code{-6}\cr 
 #' \code{lambdaUpper} upper boundary for log10{lambda}, default is \code{0}\cr
 #' \code{startTheta} optional start value for theta optimization, default is \code{NULL}\cr
-#' \code{reinterpolate} whether (\code{TRUE},default) or not (\code{FALSE}) reinterpolation should be performed
+#' \code{reinterpolate} whether (\code{TRUE}) or not (\code{FALSE},default) reinterpolation should be performed.
 #' \code{target} target values of the prediction, a vector of strings. Each string specifies a value to be predicted, e.g., "y" for mean, "s" for standard deviation, "ei" for expected improvement. See also \code{\link{predict.cobbsGPR}}.
 #' This can also be changed after the model has been built, by manipulating the respective \code{object$target} value.
 #'
@@ -107,12 +107,12 @@
 gaussianProcessRegression <- function(x, y, control=list()){
   x <- data.matrix(x) #TODO data.matrix is better than as.matrix, because it always converts to numeric, not character! (in case of mixed data types.)
   npar <- length(x[1,])
-	con<-list(thetaLower=1e-4, thetaUpper=1e2, 
+	con<-list(thetaLower=1e-6, thetaUpper=1e12, 
 		types=rep("numeric",npar),
 		algTheta=DEinterface, budgetAlgTheta=200, 
 		optimizeP= FALSE,
 		useLambda=TRUE, lambdaLower = -6, lambdaUpper = 0, 
-		startTheta=NULL, reinterpolate=TRUE, target="y")
+		startTheta=NULL, reinterpolate=FALSE, target="y")
 	con[names(control)] <- control
 	control<-con
 	
@@ -330,7 +330,8 @@ gprLikelihood <- function(x,AX,Ay,optimizeP=FALSE,useLambda=TRUE,penval=1e8){
 		lambda <- 10^x[length(x)]
 	}
 	if( any(theta==0) ||  any(is.infinite(c(theta,lambda)))){ #for instance caused by bound violation
-		return(list(NegLnLike=1e4,Psi=NA,Psinv=NA,mu=NA,ssq=NA))
+		penalty <- penval 
+		return(list(NegLnLike=penalty,Psi=NA,Psinv=NA,mu=NA,ssq=NA))
 	}
 	n <- dim(Ay)[1]
 	
@@ -584,7 +585,6 @@ predictGPRReinterpolation <- function(object,newdata,...){
 	##########################################################################
 	res <- list(y=f)
 	if (any(object$target %in% c("s","ei"))){
-		#
 		Psinv <- try(solve.default(PsiB), TRUE) 
 		if(class(Psinv)[1] == "try-error"){
 			Psinv<-ginv(PsiB)

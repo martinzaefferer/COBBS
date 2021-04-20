@@ -178,7 +178,7 @@ simulate.cobbsGPR <- function(object,nsim=1,seed=NA,xsim,method="decompose",cond
       return(simresult)
     }
   }else{
-    stop("The specified method used in simulate.cobbsGPR does not exist. Use 'decompose' or 'spectral'")
+    stop("The specified method in simulate.cobbsGPR does not exist. Use 'decompose' or 'spectral'")
   }
 }
 

@@ -13,8 +13,8 @@ gaussianProcessRegression(x, y, control = list())
 
 \item{control}{(list), with the options for the model building procedure:\cr
 \code{types} a character vector giving the data type of each variable. All but "factor" will be handled as numeric, "factor" (categorical) variables will be subject to the hamming distance.\cr
-\code{thetaLower} lower boundary for theta, default is \code{1e-4}\cr
-\code{thetaUpper} upper boundary for theta, default is \code{1e2}\cr
+\code{thetaLower} lower boundary for theta, default is \code{1e-6}\cr
+\code{thetaUpper} upper boundary for theta, default is \code{1e12}\cr
 \code{algTheta}  algorithm used to find theta, default is \code{DEinterface}.\cr
 \code{budgetAlgTheta} budget for the above mentioned algorithm, default is \code{200}. The value will be multiplied with the length of the model parameter vector to be optimized.\cr
 \code{optimizeP} boolean that specifies whether the exponents (\code{p}) should be optimized. Else they will be set to two. Default is \code{FALSE}\cr
@@ -22,7 +22,7 @@ gaussianProcessRegression(x, y, control = list())
 \code{lambdaLower} lower boundary for log10{lambda}, default is \code{-6}\cr 
 \code{lambdaUpper} upper boundary for log10{lambda}, default is \code{0}\cr
 \code{startTheta} optional start value for theta optimization, default is \code{NULL}\cr
-\code{reinterpolate} whether (\code{TRUE},default) or not (\code{FALSE}) reinterpolation should be performed
+\code{reinterpolate} whether (\code{TRUE}) or not (\code{FALSE},default) reinterpolation should be performed.
 \code{target} target values of the prediction, a vector of strings. Each string specifies a value to be predicted, e.g., "y" for mean, "s" for standard deviation, "ei" for expected improvement. See also \code{\link{predict.cobbsGPR}}.
 This can also be changed after the model has been built, by manipulating the respective \code{object$target} value.}
 }
