@@ -54,7 +54,7 @@ cobbsResult <- generateCOBBS(x,y,cntrl)
 xplot <- seq(from=0,to=1, length.out=100)
 ## plot ground truth function
 plot(xplot,groundtruth(xplot),type="l",ylim=c(-2,4),lty=2)
-## plot estimation (prediciton) 
+## plot estimation (prediction) 
 lines(xplot,cobbsResult$estimation(xplot),col="red")
 ## plot simulation
 lines(xplot,cobbsResult$simulation[[1]](xplot),col="blue")
