@@ -298,11 +298,17 @@ simulateFunction <- function(object,nsim=1, seed=NA, method="spectral", xsim=NA,
       envir=environment())	      
       fun[[i]] <- testFun
     }	
-  }else if(method=="spectral"){
+  }else if(method=="spectral" & class(object)=="cobbsGPR"){
     fun <- list()
     for(i in 1:nsim){
       fun[[i]] <- simulationSpectral(object,conditionalSimulation=conditionalSimulation,Ncos=Ncos)
     }
+  }else if(method=="spectral" & class(object)=="cobbsGPRTE"){
+    fun <- simulate(object,nsim=nsim,method="spectral",conditionalSimulation=conditionalSimulation,Ncos=Ncos,returnAll=TRUE)
+    fun <- fun$simfun
+  }else if(method=="spectral" & class(object)=="cobbsGPR2L"){
+    fun <- simulate(object,nsim=nsim,method="spectral",conditionalSimulation=conditionalSimulation,Ncos=Ncos,returnAll=TRUE)
+    fun <- fun$simfun
   }else{
     stop("The specified method in simulatedBenchmarkFunction does not exist. Use 'decompose' or 'spectal'")
   }

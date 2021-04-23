@@ -111,7 +111,7 @@ gaussianProcessRegression <- function(x, y, control=list()){
 		types=rep("numeric",npar),
 		algTheta=DEinterface, budgetAlgTheta=200, 
 		optimizeP= FALSE,
-		useLambda=TRUE, lambdaLower = -6, lambdaUpper = 0, 
+		useLambda=TRUE, lambdaLower = -16, lambdaUpper = 0, 
 		startTheta=NULL, reinterpolate=FALSE, target="y")
 	con[names(control)] <- control
 	control<-con
@@ -181,6 +181,7 @@ gaussianProcessRegression <- function(x, y, control=list()){
 	opts<-list(funEvals=fit$budgetAlgTheta*length(x0))
 	#determine a good penalty value (based on number of samples and variance of y)
 	penval <- n*log(var(y)) + 1e4
+	print(penval)
 	res <- fit$algTheta(x=x0,fun=
 							function(x,fX,fy,optimizeP,useLambda,penval){
 								if(!is.matrix(x)){

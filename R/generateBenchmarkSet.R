@@ -96,6 +96,7 @@
 generateCOBBS <- function(x,y,control=list()){
   ## default settings
   con<-list(
+    model = gaussianProcessRegression,
     modelControl = list(),
     method="spectral",
     nsim=1,
@@ -108,7 +109,7 @@ generateCOBBS <- function(x,y,control=list()){
   control<-con
   rm(con)
   
-  fit <- gaussianProcessRegression(x,y,control=control$modelControl)
+  fit <- control$model(x,y,control=control$modelControl)
   estimFun <- fit2function(fit)
   simFun <- simulateFunction(object=fit,
                              method=control$method, 
