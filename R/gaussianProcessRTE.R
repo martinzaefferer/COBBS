@@ -169,6 +169,9 @@ simulate.cobbsGPRTE <- function(object,nsim=1,seed=NA,xsim=NA,method="decompose"
       fit
       funs
       object
+      e <- new.env()
+      e$funs <- funs
+      e$object <- object
       sfun <- function(newdata){
         predictions <- list()
         for(i in 1:length(object$fits)){
@@ -183,7 +186,7 @@ simulate.cobbsGPRTE <- function(object,nsim=1,seed=NA,xsim=NA,method="decompose"
         #browser()
         ensembley <- colSums(py*weights)
       }
-      
+      environment(sfun) <- e
       #
       #
       #
