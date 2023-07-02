@@ -1,8 +1,8 @@
 ###################################################################################
 #' Validate Benchmark plot
 #' 
-#' This plot is entended to plot the error (over runtime) for an benchmark function
-#' used to test optimization algorithms. For details on usage, please see the example
+#' This plot is intended to plot the error (over runtime) for a benchmark function
+#' used to test optimization algorithms. For details on usage, please see the example.
 #' 
 #' 
 #' @param groundtruth a data frame created with \code{\link{loggedExperiment}}. This data set represents the groundruth, which means that the experiment was performed with the 'true' objective function.
